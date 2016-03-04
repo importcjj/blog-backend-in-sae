@@ -2,7 +2,7 @@
 
 import falcon
 import logging
-
+from .middlewares import JOSNTranslator
 
 logger = logging.getLogger(__name__)
 handler = logging.StreamHandler()
@@ -14,9 +14,14 @@ class Index:
     def on_get(self, req, resp):
         logger.info('logger')
         resp.status = falcon.HTTP_200
-        resp.body = ('hello falcon!')
+        resp.context['result'] = {
+            'mame': 'falcon',
+            'version': '0.3.0'
+        }
 
-app = falcon.API()
+app = falcon.API(
+    middleware=[JOSNTranslator()]
+)
 
 index = Index()
 
