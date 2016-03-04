@@ -1,14 +1,21 @@
 # -*- coding: utf-8 -*-
 
-import hug
+import falcon
 import logging
 
-logger = logging.getLogger()
+
+logger = logging.getLogger(__name__)
 
 
-@hug.get(output=hug.output_format.json)
-def index():
-    logger.info('index')
-    return {
-        'index': 'index'
-    }
+class Index:
+
+    def on_get(self, req, resp):
+        resp.status = falcon.HTTP_200
+        resp.body = ('hello falcon!')
+
+app = falcon.API()
+
+index = Index()
+
+app.add_route('/index', index)
+app.add_route('/', index)
