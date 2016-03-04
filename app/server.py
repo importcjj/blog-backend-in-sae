@@ -10,6 +10,7 @@ logger = logging.getLogger(__name__)
 class Index:
 
     def on_get(self, req, resp):
+        logger.info('logger')
         resp.status = falcon.HTTP_200
         resp.body = ('hello falcon!')
 
