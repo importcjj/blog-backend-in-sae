@@ -9,4 +9,4 @@ sys.path.insert(0, os.path.join(root, 'libraries'))
 
 from app import app
 
-application = sae.create_wsgi_app(__hug_wsgi__)
+application = sae.create_wsgi_app(app)
