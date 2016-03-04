@@ -14,7 +14,7 @@ class Index:
     def on_get(self, req, resp):
         logger.info('logger')
         resp.status = falcon.HTTP_200
-        resp.context['result'] = {
+        req.context['result'] = {
             'mame': 'falcon',
             'version': '0.3.0'
         }
