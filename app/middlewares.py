@@ -25,4 +25,4 @@ class JOSNTranslator(object):
         if 'result' not in req.context:
             return
 
-        resp.body = json.dums(req.context['result'])
+        resp.body = json.dumps(req.context['result'])
